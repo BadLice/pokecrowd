@@ -4,13 +4,24 @@ import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { Divider } from "@/components/Divider";
 import { ListItem } from "@/api/types";
+import { router } from "expo-router";
 
-export const PokemonListItem = ({ name, id, url }: ListItem) => {
+export const PokemonListItem = ({ name, id }: ListItem) => {
   return (
-    <TouchableOpacity style={styles.listItem}>
+    <TouchableOpacity
+      style={styles.listItem}
+      onPress={() =>
+        router.push({
+          pathname: "/details",
+          params:
+            //TODO: type
+            { id },
+        })
+      }
+    >
       <ThemedView style={styles.infoContainer}>
         <ThemedText>{id}</ThemedText>
-        <Divider />
+        <Divider direction={"vertical"} />
         <ThemedText>{name.toUpperCase()}</ThemedText>
       </ThemedView>
       <Entypo name="chevron-thin-right" size={24} color="black" />
