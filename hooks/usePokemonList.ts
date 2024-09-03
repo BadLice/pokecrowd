@@ -1,13 +1,25 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getPagedPokemonList } from "@/api/services";
 import { ListItem } from "@/api/types";
+import { useFavourites } from "@/contexts/useFavourites"; //TODO: 20
 
 const ITEMS_PER_PAGE = 20;
 
 export const usePokemonList = () => {
+  const { favourites } = useFavourites();
   const [items, setItems] = useState<ListItem[]>();
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFilterEnabled, setIsFilterEnabled] = useState(false);
+  const filteredItems = useMemo(
+    () => (isFilterEnabled ? favourites : items),
+    [favourites, isFilterEnabled, items],
+  );
+
+  const toggleFilter = useCallback(
+    () => setIsFilterEnabled((previousState) => !previousState),
+    [],
+  );
 
   const fetchItems = useCallback(async () => {
     setIsLoading(true);
@@ -31,5 +43,11 @@ export const usePokemonList = () => {
     fetchItems();
   }, [fetchItems]);
 
-  return { items, nextPage, isLoading };
+  return {
+    items: filteredItems,
+    nextPage,
+    isLoading,
+    toggleFilter,
+    isFilterEnabled,
+  };
 };
