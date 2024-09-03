@@ -28,11 +28,9 @@ export const PokemonListItem = (item: ListItem) => {
   }, [item, toggleFavourite]);
 
   const handleGoToDetail = useCallback(() => {
-    router.push({
+    router.push<{ id: number }>({
       pathname: "/details",
-      params:
-        //TODO: type
-        { id },
+      params: { id },
     });
   }, [id]);
 
