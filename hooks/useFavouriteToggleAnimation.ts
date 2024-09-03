@@ -7,12 +7,13 @@ import {
   withTiming,
 } from "react-native-reanimated";
 import { useCallback } from "react";
+import useUpdateEffect from "beautiful-react-hooks/useUpdateEffect";
 
 const ANGLE = 10;
 const TIME = 100;
 const EASING = Easing.elastic(1.5);
 
-export const useFavouriteToggleAnimation = () => {
+export const useFavouriteToggleAnimation = (isFavourite: boolean) => {
   const rotation = useSharedValue<number>(0);
 
   const iconStyle = useAnimatedStyle(() => ({
@@ -37,5 +38,9 @@ export const useFavouriteToggleAnimation = () => {
     );
   }, [rotation]);
 
-  return { iconStyle, start };
+  useUpdateEffect(() => {
+    start();
+  }, [isFavourite, start]);
+
+  return { iconStyle };
 };
