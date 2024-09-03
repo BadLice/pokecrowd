@@ -1,7 +1,7 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 import { ListItem } from "@/api/types";
 
-type FavouritesContextType = {
+export type FavouritesContextType = {
   favourites: ListItem[];
   setFavourites: Dispatch<SetStateAction<ListItem[]>>;
   toggleFavourite: (id: ListItem) => void;
