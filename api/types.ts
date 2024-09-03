@@ -5,15 +5,18 @@ export type GetPagedItemsQueryParams = {
 
 export type ListItem = {
   name: string;
-  url: string;
   id: number;
+};
+
+export type ListItemResponse = ListItem & {
+  url: string;
 };
 
 export type PagedItemsResponse = {
   count: number;
   next: string | null;
   previous: string | null;
-  results: ListItem[];
+  results: ListItemResponse[];
 };
 
 interface Ability {
