@@ -25,7 +25,7 @@ export const usePokemonList = () => {
     setIsLoading(true);
     const response = await getPagedPokemonList({
       limit: ITEMS_PER_PAGE,
-      offset: ITEMS_PER_PAGE * page,
+      offset: ITEMS_PER_PAGE * (page - 1),
     });
     if (!response.data) return; //TODO
     setItems((currentItems) => [
