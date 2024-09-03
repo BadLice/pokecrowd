@@ -1,5 +1,4 @@
-import { ThemedView } from "@/components/ThemedView";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Divider } from "@/components/Divider";
 import { PokemonDetailCategoryInfo } from "@/components/PokemonDetailCategoryInfo";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
@@ -23,8 +22,8 @@ export const PokemonDetails = ({ details }: { details: Pokemon }) => {
   }, [details, toggleFavourite]);
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={styles.titleContainer}>
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
         <Text style={{ fontSize: 40 }}>{details?.id}</Text>
         <Divider direction={"vertical"} style={styles.dividerVertical} />
         <TouchableOpacity onPress={handleToggleFavourite}>
@@ -32,7 +31,7 @@ export const PokemonDetails = ({ details }: { details: Pokemon }) => {
         </TouchableOpacity>
         <Divider direction={"vertical"} style={styles.dividerVertical} />
         <Text style={styles.titleText}>{details?.name.toUpperCase()}</Text>
-      </ThemedView>
+      </View>
       {!!details?.types && (
         <PokemonDetailCategoryInfo
           title={"Types"}
@@ -52,7 +51,7 @@ export const PokemonDetails = ({ details }: { details: Pokemon }) => {
           color={"#4a8335"}
         />
       )}
-    </ThemedView>
+    </View>
   );
 };
 

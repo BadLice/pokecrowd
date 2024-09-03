@@ -1,10 +1,9 @@
-import { ThemedView } from "@/components/ThemedView";
-import { ActivityIndicator, StyleSheet } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 export const FullPageSpinner = () => (
-  <ThemedView style={styles.centered}>
+  <View style={styles.centered}>
     <ActivityIndicator />
-  </ThemedView>
+  </View>
 );
 
 const styles = StyleSheet.create({

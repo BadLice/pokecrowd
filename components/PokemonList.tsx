@@ -1,9 +1,14 @@
 import { useCallback, useState } from "react";
-import { ActivityIndicator, FlatList, StyleSheet, Switch } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native";
 import { PokemonListItem } from "@/components/PokemonListItem";
-import { ThemedView } from "@/components/ThemedView";
 import { usePokemonList } from "@/hooks/usePokemonList";
-import { ThemedText } from "@/components/ThemedText";
 
 export const PokemonList = () => {
   const { items, nextPage, isLoading, toggleFilter, isFilterEnabled } =
@@ -18,14 +23,16 @@ export const PokemonList = () => {
   }, [hasMomentum, nextPage]);
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={styles.switchContainer}>
-        <ThemedText>Show favourites only</ThemedText>
+    <View style={styles.container}>
+      <View style={styles.switchContainer}>
+        <Text>Show favourites only</Text>
         <Switch value={isFilterEnabled} onValueChange={toggleFilter} />
-      </ThemedView>
-      <ThemedView style={styles.infoContainer}>
-        <ThemedText>Long press to add/remove favourites</ThemedText>
-      </ThemedView>
+      </View>
+      <View style={styles.infoContainer}>
+        {!isFilterEnabled ? (
+          <Text>Long press to add/remove favourites</Text>
+        ) : null}
+      </View>
       <FlatList
         style={styles.list}
         contentContainerStyle={styles.listContainer}
@@ -36,18 +43,20 @@ export const PokemonList = () => {
         onMomentumScrollBegin={() => setHasMomentum(false)}
         ListFooterComponent={isLoading ? <ActivityIndicator /> : null}
         ListEmptyComponent={
-          <ThemedView
-            style={{
-              backgroundColor: "inherit",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <ThemedText>There are no favourites</ThemedText>
-          </ThemedView>
+          !isLoading ? (
+            <View
+              style={{
+                backgroundColor: "inherit",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Text>There are no favourites</Text>
+            </View>
+          ) : null
         }
       />
-    </ThemedView>
+    </View>
   );
 };
 

@@ -1,5 +1,4 @@
-import { StyleSheet, Text } from "react-native";
-import { ThemedView } from "@/components/ThemedView";
+import { StyleSheet, Text, View } from "react-native";
 import Octicons from "@expo/vector-icons/Octicons";
 import { ReactNode } from "react";
 
@@ -17,20 +16,20 @@ export const PokemonDetailCategoryInfo = ({
   const styles = getStyles(color);
   return (
     <>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.titleContainer}>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
           {icon}
           <Text style={styles.titleText}>{title}</Text>
-        </ThemedView>
-        <ThemedView>
+        </View>
+        <View>
           {data.map((item) => (
-            <ThemedView style={styles.listContainer} key={item}>
+            <View style={styles.listContainer} key={item}>
               <Octicons name="triangle-right" size={24} color="black" />
               <Text style={styles.listItemText}>{item}</Text>
-            </ThemedView>
+            </View>
           ))}
-        </ThemedView>
-      </ThemedView>
+        </View>
+      </View>
     </>
   );
 };

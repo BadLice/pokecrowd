@@ -1,12 +1,11 @@
 import {
   StyleSheet,
+  Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
-import { ThemedView } from "@/components/ThemedView";
-import { ThemedText } from "@/components/ThemedText";
 import { Divider } from "@/components/Divider";
 import { ListItem } from "@/api/types";
 import { router } from "expo-router";
@@ -25,7 +24,7 @@ export const PokemonListItem = (item: ListItem) => {
 
   const handleToggleFavourite = useCallback(() => {
     toggleFavourite(item);
-  }, [id, toggleFavourite]);
+  }, [item, toggleFavourite]);
 
   const handleGoToDetail = useCallback(() => {
     router.push({
@@ -39,13 +38,13 @@ export const PokemonListItem = (item: ListItem) => {
   return (
     <TouchableWithoutFeedback onLongPress={handleToggleFavourite}>
       <View style={styles.listItem}>
-        <ThemedView style={styles.infoContainer}>
-          <ThemedText>{id}</ThemedText>
+        <View style={styles.infoContainer}>
+          <Text>{id}</Text>
           <Divider direction={"vertical"} />
           <FavouriteIcon isFavourite={isFavourite} />
           <Divider direction={"vertical"} />
-          <ThemedText>{name.toUpperCase()}</ThemedText>
-        </ThemedView>
+          <Text>{name.toUpperCase()}</Text>
+        </View>
         <TouchableOpacity onPress={handleGoToDetail}>
           <Entypo name="chevron-thin-right" size={24} color="black" />
         </TouchableOpacity>

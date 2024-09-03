@@ -1,14 +1,15 @@
-import { Image, SafeAreaView, StyleSheet } from "react-native";
-import { ThemedView } from "@/components/ThemedView";
+import { Image, SafeAreaView, StyleSheet, View } from "react-native";
 import { PokemonList } from "@/components/PokemonList";
+import { Colors } from "@/constants/Colors";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView>
-      <ThemedView
-        style={{ height: "20%" }}
-        lightColor={"#A1CEDC"}
-        darkColor={"#1D3D47"}
+    <SafeAreaView style={styles.safeArea}>
+      <View
+        style={{
+          height: "20%",
+          backgroundColor: "inherit",
+        }}
       >
         <Image
           source={{
@@ -16,13 +17,14 @@ export default function HomeScreen() {
           }}
           style={styles.reactLogo}
         />
-      </ThemedView>
+      </View>
       <PokemonList />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: { gap: 10, backgroundColor: Colors.backgroundCyan },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
