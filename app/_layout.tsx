@@ -35,8 +35,15 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <FavouritesProvider>
         <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
+          <Stack.Screen
+            name="index"
+            options={{ headerShown: false, title: "Home" }}
+          />
+          <Stack.Screen name="details" options={{ title: "Pokemon detail" }} />
+          <Stack.Screen
+            name="+not-found"
+            options={{ title: "Page not found" }}
+          />
         </Stack>
       </FavouritesProvider>
     </ThemeProvider>
