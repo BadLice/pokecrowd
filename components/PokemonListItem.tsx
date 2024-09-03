@@ -46,7 +46,7 @@ export const PokemonListItem = (item: ListItem) => {
           <Divider direction={"vertical"} />
           <Text>{name.toUpperCase()}</Text>
         </View>
-        <TouchableOpacity onPress={handleGoToDetail}>
+        <TouchableOpacity onPress={handleGoToDetail} hitSlop={10}>
           <Entypo name="chevron-thin-right" size={24} color="black" />
         </TouchableOpacity>
       </View>
