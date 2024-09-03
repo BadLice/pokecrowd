@@ -13,6 +13,7 @@ import { useFavourites } from "@/contexts/useFavourites";
 import { useCallback, useMemo } from "react";
 import { FavouriteIcon } from "@/components/FavouriteIcon";
 import { isFavourite as isFavouriteHelper } from "@/contexts/FavouritesHelpers";
+import { Colors } from "@/constants/Colors";
 
 export const PokemonListItem = (item: ListItem) => {
   const { id, name } = item;
@@ -56,7 +57,7 @@ export const PokemonListItem = (item: ListItem) => {
 const styles = StyleSheet.create({
   listItem: {
     width: "100%",
-    backgroundColor: "#eee",
+    backgroundColor: Colors.backgroundLight,
     borderRadius: 5,
     height: 50,
     alignItems: "center",

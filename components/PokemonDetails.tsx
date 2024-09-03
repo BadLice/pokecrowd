@@ -8,6 +8,7 @@ import { FavouriteIcon } from "@/components/FavouriteIcon";
 import { useCallback, useMemo } from "react";
 import { isFavourite as isFavouriteHelper } from "@/contexts/FavouritesHelpers";
 import { useFavourites } from "@/contexts/useFavourites";
+import { Colors } from "@/constants/Colors";
 
 export const PokemonDetails = ({ details }: { details: Pokemon }) => {
   const { toggleFavourite, favourites } = useFavourites();
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: "inherit",
     alignItems: "center",
   },
-  titleText: { color: "#3C5AA6", fontSize: 40 },
+  titleText: { color: Colors.title, fontSize: 40 },
   dividerHorizontal: { width: "100%" },
   dividerVertical: { height: "100%" },
 });

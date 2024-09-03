@@ -5,17 +5,12 @@ import { Colors } from "@/constants/Colors";
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View
-        style={{
-          height: "20%",
-          backgroundColor: "inherit",
-        }}
-      >
+      <View style={styles.logoContainer}>
         <Image
           source={{
             uri: "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png",
           }}
-          style={styles.reactLogo}
+          style={styles.logo}
         />
       </View>
       <PokemonList />
@@ -25,11 +20,15 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   safeArea: { gap: 10, backgroundColor: Colors.backgroundCyan },
+  logoContainer: {
+    height: "20%",
+    backgroundColor: "inherit",
+  },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
   },
-  reactLogo: {
+  logo: {
     height: "100%",
     width: "100%",
     top: 0,

@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import { StyleProps } from "react-native-reanimated";
+import { Colors } from "@/constants/Colors";
 
 export const Divider = ({
   direction = "horizontal",
@@ -19,6 +20,6 @@ export const Divider = ({
 );
 
 const styles = StyleSheet.create({
-  dividerHorizontal: { height: 1, backgroundColor: "grey" },
-  dividerVertical: { width: 1, backgroundColor: "grey" },
+  dividerHorizontal: { height: 1, backgroundColor: Colors.backgroundDivider },
+  dividerVertical: { width: 1, backgroundColor: Colors.backgroundDivider },
 });
