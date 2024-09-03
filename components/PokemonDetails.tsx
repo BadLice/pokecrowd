@@ -23,46 +23,49 @@ export const PokemonDetails = ({ details }: { details: Pokemon }) => {
   }, [details, toggleFavourite]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={{ fontSize: 40 }}>{details?.id}</Text>
-        <Divider direction={"vertical"} style={styles.dividerVertical} />
-        <TouchableOpacity onPress={handleToggleFavourite}>
-          <FavouriteIcon isFavourite={isFavourite} />
-        </TouchableOpacity>
-        <Divider direction={"vertical"} style={styles.dividerVertical} />
-        <Text style={styles.titleText}>{details?.name.toUpperCase()}</Text>
+    <View>
+      <View style={styles.infoContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={{ fontSize: 40 }}>{details?.id}</Text>
+          <Divider direction={"vertical"} style={styles.dividerVertical} />
+          <TouchableOpacity onPress={handleToggleFavourite}>
+            <FavouriteIcon isFavourite={isFavourite} />
+          </TouchableOpacity>
+          <Divider direction={"vertical"} style={styles.dividerVertical} />
+          <Text style={styles.titleText}>{details?.name.toUpperCase()}</Text>
+        </View>
+        {!!details?.types && (
+          <PokemonDetailCategoryInfo
+            title={"Types"}
+            data={details?.types.map((typeSlot) => typeSlot.type.name)}
+            icon={<SimpleLineIcons name="fire" size={24} color="black" />}
+            color={"#8450c8"}
+          />
+        )}
+        <Divider style={styles.dividerHorizontal} />
+        {!!details?.abilities && (
+          <PokemonDetailCategoryInfo
+            title={"Abilities"}
+            icon={<FontAwesome5 name="fist-raised" size={24} color="black" />}
+            data={details?.abilities.map(
+              (abilitySlot) => abilitySlot.ability.name,
+            )}
+            color={"#4a8335"}
+          />
+        )}
       </View>
-      {!!details?.types && (
-        <PokemonDetailCategoryInfo
-          title={"Types"}
-          data={details?.types.map((typeSlot) => typeSlot.type.name)}
-          icon={<SimpleLineIcons name="fire" size={24} color="black" />}
-          color={"#8450c8"}
-        />
-      )}
-      <Divider style={styles.dividerHorizontal} />
-      {!!details?.abilities && (
-        <PokemonDetailCategoryInfo
-          title={"Abilities"}
-          icon={<FontAwesome5 name="fist-raised" size={24} color="black" />}
-          data={details?.abilities.map(
-            (abilitySlot) => abilitySlot.ability.name,
-          )}
-          color={"#4a8335"}
-        />
-      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  infoContainer: {
     height: "100%",
     width: "100%",
     alignItems: "center",
     gap: 30,
-    padding: 5,
+    backgroundColor: Colors.backgroundDefault,
+    padding: 32,
   },
   titleContainer: {
     flexDirection: "row",

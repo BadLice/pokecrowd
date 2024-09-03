@@ -20,7 +20,6 @@ export default function Details() {
           style={styles.image}
         />
       }
-      contentStyle={styles.contentStyle}
       headerStyle={styles.headerStyle}
     >
       {!!details && <PokemonDetails details={details} />}
@@ -29,7 +28,6 @@ export default function Details() {
 }
 
 const styles = StyleSheet.create({
-  contentStyle: { padding: 10 },
   headerStyle: { height: 300 },
   image: { height: "100%", width: "100%" },
 });
